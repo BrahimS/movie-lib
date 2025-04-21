@@ -6,7 +6,7 @@ import type { Movie } from '@/types/models/movie.ts'
 describe('MovieList', async () => {
   const vuetify = createVuetify()
   const component = await import('../movie/MovieList.vue')
-  
+
   const mockMovies: Movie[] = []
   const wrapper = mount(component.default, {
     props: {

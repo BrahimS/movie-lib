@@ -6,7 +6,7 @@ import { createVuetify } from 'vuetify'
 describe('MovieReviews', async () => {
   const vuetify = createVuetify()
   setActivePinia(createPinia())
-  
+
   const component = await import('../movie/MovieReviews.vue')
   const wrapper = mount(component.default, {
     props: {
