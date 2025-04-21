@@ -53,12 +53,10 @@ describe('MovieCard', async () => {
           ],
         },
         images: {
-          backdrops: [
-
-        ]}
-
+          backdrops: []
+        }
       },
-    } as Movie,
+    } as unknown as Movie,
   })
 
   it(`IntersectionObserver`, () => {

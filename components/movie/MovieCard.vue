@@ -98,8 +98,8 @@ onMounted(() => {
       />
     </v-card-subtitle>
 
-    <v-card-text v-if="movie.overview" class="tw-line-clamp-3">
-      {{ movie.overview }}
+    <v-card-text v-if="movie.overview" class="tw-line-clamp-3 py-4">
+      {{ movie.overview.substring(0, 80)+ '...' }}
     </v-card-text>
   </v-card>
 </template>

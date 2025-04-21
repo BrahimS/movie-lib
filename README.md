@@ -1,4 +1,8 @@
-# movieapp
+# Movie library app
+
+Preview:
+![movie list preview](https://github.com/BrahimS/movie-lib/blob/features/docs/movielist.png)
+![movie details preview](https://github.com/BrahimS/movie-lib/blob/features/docs/moviedetails.png)
 
 ## Build Setup
 

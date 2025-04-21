@@ -164,6 +164,10 @@ export const useMovieStore = defineStore('movie', {
           backdrop_path: details.backdrop_path
             ? `https://image.tmdb.org/t/p/original${details.backdrop_path}`
             : null,
+          // Extract director from crew
+          director: credits.crew?.find(person => person.job === 'Director')?.name || null,
+          // Get top cast members (first 5)
+          cast: credits.cast?.slice(0, 5).map(actor => actor.name) || [],
           credits
         }
 

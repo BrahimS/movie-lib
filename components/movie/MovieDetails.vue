@@ -35,24 +35,23 @@ defineProps<{
         <span class="tw-font-bold">Status:</span>
         <v-chip color="success" class="tw-ml-2">{{ movie.status }}</v-chip>
         <span class="tw-ml-4 tw-font-bold">Release Date:</span>
-        <span class="tw-text-gray-600">{{ movie.release_date }}</span>
+        <span class="tw-text-gray-600 tw-ml-2">{{ movie.release_date }}</span>
       </div>
 
       <!-- Director -->
       <div class="tw-mb-4">
         <span class="tw-font-bold">Director:</span>
-        <span class="tw-ml-2">{{ movie.director || 'Unknown' }}</span>
+        <span v-if="movie.director" class="tw-ml-2">{{ movie.director }}</span>
+        <span v-else class="tw-ml-2 tw-text-gray-500">Not available</span>
       </div>
 
       <!-- Actors -->
       <div class="tw-mb-4">
-        <span class="tw-font-bold">Actors:</span>
-        <span class="tw-ml-2">
-          <template v-if="movie.cast && movie.cast.length">
-            {{ movie.cast.join(', ') }}
-          </template>
-          <template v-else> Unknown </template>
+        <span class="tw-font-bold">Cast:</span>
+        <span v-if="movie.cast?.length" class="tw-ml-2">
+          {{ movie.cast.join(', ') }}
         </span>
+        <span v-else class="tw-ml-2 tw-text-gray-500">Not available</span>
       </div>
 
       <!-- Genres -->
@@ -72,20 +71,20 @@ defineProps<{
       </div>
 
       <!-- Rating & Voters -->
-      <v-row class="tw-items-center tw-mb-4">
+      <div class="tw-mb-4">
         <span class="tw-font-bold">TMDB Rating:</span>
         <v-rating
           :model-value="movie.vote_average / 2"
           color="amber"
           half-increments
           readonly
-          class="tw-mx-2"
+          class="tw-mx-2 tw-inline"
         />
         <span class="tw-text-gray-600"> {{ movie.vote_average }}/10 </span>
         <span class="tw-ml-4 tw-font-bold">Voters:</span>
         <v-icon icon="mdi-account-group" class="tw-mx-1" />
         <span class="tw-text-gray-600">{{ movie.vote_count }}</span>
-      </v-row>
+      </div>
 
       <!-- Runtime -->
       <div v-if="movie.runtime" class="tw-mb-4">

@@ -4,16 +4,16 @@ import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useMovieStore } from '@/store/movie'
 import { useCommentsStore } from '@/store/comments'
+import MovieDetails from '@/components/movie/MovieDetails.vue'
 import MovieReviews from '@/components/movie/MovieReviews.vue'
 import BackToMoviesButton from '@/components/ui/BackToMoviesButton.vue'
 
 const route = useRoute()
+const movieId = computed(() => Number(route.params.id))
 const movieStore = useMovieStore()
 const { currentMovie, loading } = storeToRefs(movieStore)
 const commentsStore = useCommentsStore()
-const averageRating = computed(() =>
-  commentsStore.getAverageRating(Number(route.params.id)),
-)
+const averageRating = computed(() => commentsStore.getAverageRating(movieId.value))
 
 onMounted(async () => {
   await movieStore.fetchMovieDetails(route.params.id as string)
@@ -26,7 +26,7 @@ onMounted(async () => {
       <MovieDetails :movie="currentMovie" />
       <MovieReviews
         :averageRating="averageRating"
-        :movieId="Number(route.params.id)"
+        :movieId="movieId"
       />
     </v-container>
     <div v-else-if="loading" class="tw-fixed tw-inset-0 tw-flex tw-items-center tw-justify-center tw-bg-black/80 tw-z-50">

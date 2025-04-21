@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { defineOptions, defineProps } from 'vue'
+import { defineOptions } from 'vue'
+import CommentForm from '@/components/reviews/CommentForm.vue'
+import CommentList from '@/components/reviews/CommentList.vue'
 
 defineOptions({
   name: 'MovieReviews',
 })
+
 defineProps<{
   averageRating: number
   movieId: number
@@ -18,7 +21,7 @@ defineProps<{
       <v-rating :model-value="averageRating" color="warning" half-increments readonly />
       <span class="tw-ml-2">({{ averageRating }})</span>
     </div>
-    <CommentForm :movie-id="movieId" />
+    <CommentForm :movie-id="movieId" class="tw-mb-6" />
     <CommentList :movie-id="movieId" />
   </section>
 </template>

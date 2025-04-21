@@ -74,7 +74,7 @@ const submitComment = async () => {
 </script>
 <template>
   <v-card class="p-4">
-    <v-form @submit.prevent="submitComment">
+    <v-form @submit.prevent="submitComment" class="tw-p-12 tw-bg-gray-950">
       <v-text-field
         v-model="username"
         :error-messages="v$.username.$errors.map((e) => e.$message)"
@@ -87,9 +87,10 @@ const submitComment = async () => {
         <RichTextEditor v-model="message" :error="v$.message.$error" :error-message="v$.message.$errors[0]?.$message" />
       </div>
 
+ 
       <v-rating v-model="rating" color="warning" hover length="10" size="large" />
       <div v-if="v$.rating.$error" class="text-red-500 text-sm">
-        {{ v$.rating.$errors[0].$message }}
+       {{ v$.rating.$errors[0].$message }}
       </div>
 
       <v-btn type="submit" color="primary" block :disabled="v$.$invalid" class="mt-4"> Submit Comment </v-btn>
