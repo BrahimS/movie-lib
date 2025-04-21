@@ -60,9 +60,13 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      tmdbBaseURL: process.env.NUXT_PUBLIC_TMDB_BASE_URL || 'https://api.themoviedb.org/3',
+      tmdbBaseURL:
+        process.env.NUXT_PUBLIC_TMDB_BASE_URL || 'https://api.themoviedb.org/3',
       tmdbApiKey: process.env.NUXT_PUBLIC_TMDB_API_KEY,
       apiBase: 'https://api.themoviedb.org/3',
+      apiImageBaseUrl:
+        process.env.NUXT_PUBLIC_API_IMAGE_BASE_URL ||
+        'https://image.tmdb.org/t/p/w500',
       apiKey: '',
     },
   },
