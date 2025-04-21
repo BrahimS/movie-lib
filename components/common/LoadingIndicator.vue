@@ -1,5 +1,9 @@
 <script setup lang="ts">
-const props = defineProps<{
+import { defineProps, defineOptions } from 'vue'
+defineOptions({
+  name: 'LoadingIndicator',
+})
+defineProps<{
   color?: string
   size?: number
 }>()

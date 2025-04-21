@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import { defineOptions } from 'vue'
+defineOptions({
+  name: 'MovieCardSkeleton',
+})
+</script>
 <template>
   <v-card class="movie-card tw-h-full">
     <div class="tw-relative tw-h-[300px] tw-overflow-hidden">
@@ -14,25 +20,32 @@
 
     <v-card-text>
       <div class="tw-space-y-2">
-        <div class="tw-h-4 tw-w-full tw-bg-gray-700 tw-animate-pulse tw-rounded" />
-        <div class="tw-h-4 tw-w-5/6 tw-bg-gray-700 tw-animate-pulse tw-rounded" />
-        <div class="tw-h-4 tw-w-4/6 tw-bg-gray-700 tw-animate-pulse tw-rounded" />
+        <div
+          class="tw-h-4 tw-w-full tw-bg-gray-700 tw-animate-pulse tw-rounded"
+        />
+        <div
+          class="tw-h-4 tw-w-5/6 tw-bg-gray-700 tw-animate-pulse tw-rounded"
+        />
+        <div
+          class="tw-h-4 tw-w-4/6 tw-bg-gray-700 tw-animate-pulse tw-rounded"
+        />
       </div>
     </v-card-text>
   </v-card>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .movie-card {
   background-color: rgb(31, 31, 31);
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
-    opacity: .5;
+    opacity: 0.5;
   }
 }
 

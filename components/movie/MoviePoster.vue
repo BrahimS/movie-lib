@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { defineOptions, defineProps } from 'vue'
 defineOptions({
   name: 'MoviePoster',
 })
@@ -14,6 +15,7 @@ defineProps<{
 <template>
   <v-col cols="12" sm="4" md="3">
     <v-img
+      class="movie-poster"
       :src="
         posterPath
           ? 'https://image.tmdb.org/t/p/w500' + posterPath

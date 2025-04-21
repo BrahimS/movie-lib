@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import CommentForm from '@/components/reviews/CommentForm.vue'
-import CommentList from '@/components/reviews/CommentList.vue'
+import { defineOptions, defineProps } from 'vue'
+import CommentForm from './reviews/CommentForm.vue'
+import CommentList from './reviews/CommentList.vue'
 
 defineOptions({
   name: 'MovieReviews',

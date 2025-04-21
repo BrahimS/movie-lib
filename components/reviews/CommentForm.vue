@@ -1,48 +1,5 @@
-<template>
-  <v-card class="p-4">
-    <v-form @submit.prevent="submitComment">
-      <v-text-field
-        v-model="username"
-        :error-messages="v$.username.$errors.map((e) => e.$message)"
-        label="Username"
-        @input="v$.username.$touch"
-        @blur="v$.username.$touch"
-      />
-
-      <div class="mb-4">
-        <RichTextEditor
-          v-model="message"
-          :error="v$.message.$error"
-          :error-message="v$.message.$errors[0]?.$message"
-        />
-      </div>
-
-      <v-rating
-        v-model="rating"
-        color="warning"
-        hover
-        length="10"
-        size="large"
-      />
-      <div v-if="v$.rating.$error" class="text-red-500 text-sm">
-        {{ v$.rating.$errors[0].$message }}
-      </div>
-
-      <v-btn
-        type="submit"
-        color="primary"
-        block
-        :disabled="v$.$invalid"
-        class="mt-4"
-      >
-        Submit Comment
-      </v-btn>
-    </v-form>
-  </v-card>
-</template>
-
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref, watch, defineOptions, defineProps } from 'vue'
 import { useVuelidate } from '@vuelidate/core'
 import { required, minLength, maxLength, between } from '@vuelidate/validators'
 import { useEditor } from '@tiptap/vue-3'
@@ -50,6 +7,9 @@ import StarterKit from '@tiptap/starter-kit'
 import { useCommentsStore } from '~/store/comments'
 import RichTextEditor from '@/components/reviews/RichTextEditor.vue'
 
+defineOptions({
+  name: 'CommentForm',
+})
 const props = defineProps<{
   movieId: number
 }>()
@@ -117,6 +77,48 @@ const submitComment = async () => {
   v$.value.$reset()
 }
 </script>
+<template>
+  <v-card class="p-4">
+    <v-form @submit.prevent="submitComment">
+      <v-text-field
+        v-model="username"
+        :error-messages="v$.username.$errors.map((e) => e.$message)"
+        label="Username"
+        @input="v$.username.$touch"
+        @blur="v$.username.$touch"
+      />
+
+      <div class="mb-4">
+        <RichTextEditor
+          v-model="message"
+          :error="v$.message.$error"
+          :error-message="v$.message.$errors[0]?.$message"
+        />
+      </div>
+
+      <v-rating
+        v-model="rating"
+        color="warning"
+        hover
+        length="10"
+        size="large"
+      />
+      <div v-if="v$.rating.$error" class="text-red-500 text-sm">
+        {{ v$.rating.$errors[0].$message }}
+      </div>
+
+      <v-btn
+        type="submit"
+        color="primary"
+        block
+        :disabled="v$.$invalid"
+        class="mt-4"
+      >
+        Submit Comment
+      </v-btn>
+    </v-form>
+  </v-card>
+</template>
 
 <style lang="scss">
 .ProseMirror {

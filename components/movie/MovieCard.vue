@@ -1,12 +1,18 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, withDefaults, defineProps } from 'vue'
 import type { Movie } from '@/types/models/movie'
 
-const props = withDefaults(defineProps<{
-  movie: Movie
-}>(), {})
 
-const imgRef = ref<HTMLElement | null>(null)
+const props = withDefaults(
+  defineProps<{
+    movie: Movie
+  }>(),
+  {},
+)
+
+import type { Ref } from 'vue'
+
+const imgRef: Ref<HTMLElement | null> = ref(null)
 const isVisible = ref(false)
 const imageLoaded = ref(false)
 
@@ -33,10 +39,10 @@ onMounted(() => {
         }
       })
     },
-    { 
+    {
       threshold: 0.1,
-      rootMargin: '50px'
-    }
+      rootMargin: '50px',
+    },
   )
 
   observer.observe(imgRef.value)
@@ -55,21 +61,26 @@ onMounted(() => {
       <template v-if="isVisible">
         <v-img
           :src="imageUrl"
-          :aspect-ratio="2/3"
+          :aspect-ratio="2 / 3"
           cover
           @load="imageLoaded = true"
           class="tw-h-full"
           :class="{
             'tw-opacity-0': !imageLoaded,
-            'tw-opacity-100 tw-transition-opacity tw-duration-300': imageLoaded
+            'tw-opacity-100 tw-transition-opacity tw-duration-300': imageLoaded,
           }"
         >
           <template #placeholder>
-            <div class="tw-absolute tw-inset-0 tw-bg-gray-700 tw-animate-pulse" />
+            <div
+              class="tw-absolute tw-inset-0 tw-bg-gray-700 tw-animate-pulse"
+            />
           </template>
         </v-img>
       </template>
-      <div v-else class="tw-absolute tw-inset-0 tw-bg-gray-700 tw-animate-pulse" />
+      <div
+        v-else
+        class="tw-absolute tw-inset-0 tw-bg-gray-700 tw-animate-pulse"
+      />
     </div>
 
     <v-card-title class="tw-line-clamp-2">

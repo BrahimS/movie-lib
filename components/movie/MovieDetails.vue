@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { defineOptions, defineProps } from 'vue'
 import type { MovieDetailsType } from '@/types/models/movieDetails'
 
 defineOptions({

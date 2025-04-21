@@ -2,10 +2,10 @@
 import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
-import { useMovieStore } from '~/store/movie'
-import { useCommentsStore } from '~/store/comments'
-import MovieReviews from '~/components/movie/MovieReviews.vue'
-import BackToMoviesButton from '~/components/ui/BackToMoviesButton.vue'
+import { useMovieStore } from '@/store/movie'
+import { useCommentsStore } from '@/store/comments'
+import MovieReviews from '@/components/movie/MovieReviews.vue'
+import BackToMoviesButton from '@/components/ui/BackToMoviesButton.vue'
 
 const route = useRoute()
 const movieStore = useMovieStore()
@@ -17,7 +17,6 @@ const averageRating = computed(() =>
 
 onMounted(async () => {
   await movieStore.fetchMovieDetails(route.params.id as string)
-  commentsStore.loadFromLocalStorage()
 })
 </script>
 <template>

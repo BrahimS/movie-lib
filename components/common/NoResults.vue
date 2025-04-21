@@ -1,7 +1,13 @@
 <script setup lang="ts">
-const props = defineProps<{
+import { defineProps, defineOptions } from 'vue'
+
+defineOptions ({
+  name: 'NoResults'
+})
+defineProps<{
   message?: string
 }>()
+
 </script>
 
 <template>
