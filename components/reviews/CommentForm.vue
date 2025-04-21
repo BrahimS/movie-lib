@@ -4,7 +4,7 @@ import { useVuelidate } from '@vuelidate/core'
 import { required, minLength, maxLength, between } from '@vuelidate/validators'
 import { useEditor } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
-import { useCommentsStore } from '~/store/comments'
+import { useCommentsStore } from '@/store/comments'
 import RichTextEditor from '@/components/reviews/RichTextEditor.vue'
 
 defineOptions({

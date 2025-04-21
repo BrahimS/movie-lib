@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useCommentsStore } from '~/store/comments'
+import { useCommentsStore } from '@/store/comments'
 
 const props = defineProps<{
   movieId: number
