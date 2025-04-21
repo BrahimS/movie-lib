@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { defineOptions, defineProps } from 'vue'
-import CommentForm from './reviews/CommentForm.vue'
-import CommentList from './reviews/CommentList.vue'
 
 defineOptions({
   name: 'MovieReviews',
@@ -17,12 +15,7 @@ defineProps<{
     <h2 class="tw-text-2xl tw-mb-4">Reviews</h2>
     <div class="tw-flex tw-items-center tw-mb-6">
       <span class="tw-text-xl tw-mr-2">Average Rating:</span>
-      <v-rating
-        :model-value="averageRating"
-        color="warning"
-        half-increments
-        readonly
-      />
+      <v-rating :model-value="averageRating" color="warning" half-increments readonly />
       <span class="tw-ml-2">({{ averageRating }})</span>
     </div>
     <CommentForm :movie-id="movieId" />

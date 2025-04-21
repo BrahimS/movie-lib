@@ -63,12 +63,7 @@ const submitComment = async () => {
   const isValid = await v$.value.$validate()
   if (!isValid) return
 
-  commentsStore.addComment(
-    props.movieId,
-    username.value,
-    message.value,
-    rating.value,
-  )
+  commentsStore.addComment(props.movieId, username.value, message.value, rating.value)
 
   // Reset form
   username.value = ''
@@ -89,33 +84,15 @@ const submitComment = async () => {
       />
 
       <div class="mb-4">
-        <RichTextEditor
-          v-model="message"
-          :error="v$.message.$error"
-          :error-message="v$.message.$errors[0]?.$message"
-        />
+        <RichTextEditor v-model="message" :error="v$.message.$error" :error-message="v$.message.$errors[0]?.$message" />
       </div>
 
-      <v-rating
-        v-model="rating"
-        color="warning"
-        hover
-        length="10"
-        size="large"
-      />
+      <v-rating v-model="rating" color="warning" hover length="10" size="large" />
       <div v-if="v$.rating.$error" class="text-red-500 text-sm">
         {{ v$.rating.$errors[0].$message }}
       </div>
 
-      <v-btn
-        type="submit"
-        color="primary"
-        block
-        :disabled="v$.$invalid"
-        class="mt-4"
-      >
-        Submit Comment
-      </v-btn>
+      <v-btn type="submit" color="primary" block :disabled="v$.$invalid" class="mt-4"> Submit Comment </v-btn>
     </v-form>
   </v-card>
 </template>
