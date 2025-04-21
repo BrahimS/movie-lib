@@ -16,17 +16,10 @@ defineProps<{
   <v-col cols="12" sm="4" md="3">
     <v-img
       class="movie-poster"
-      :src="
-        posterPath
-          ? 'https://image.tmdb.org/t/p/w500' + posterPath
-          : 'https://placehold.co/500x750?text=No+Poster'
-      "
+      :src="posterPath ? 'https://image.tmdb.org/t/p/w500' + posterPath : 'https://placehold.co/500x750?text=No+Poster'"
       :aspect-ratio="aspectRatio || 2 / 3"
       cover
-      :class="[
-        rounded !== false ? 'tw-rounded-lg' : '',
-        shadow !== false ? 'tw-shadow-xl' : '',
-      ]"
+      :class="[rounded !== false ? 'tw-rounded-lg' : '', shadow !== false ? 'tw-shadow-xl' : '']"
       :alt="alt || 'Movie poster'"
     />
   </v-col>

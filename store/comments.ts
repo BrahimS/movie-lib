@@ -9,7 +9,7 @@ interface CommentState {
 
 export const useCommentsStore = defineStore('comments', {
   state: (): CommentState => ({
-    comments: useStorage('movie-comments', {} as Record<number, MovieComment[]>).value
+    comments: useStorage('movie-comments', {} as Record<number, MovieComment[]>).value,
   }),
 
   getters: {
@@ -25,18 +25,13 @@ export const useCommentsStore = defineStore('comments', {
         const sum = movieComments.reduce((acc, comment) => acc + comment.rating, 0)
         return Number((sum / movieComments.length).toFixed(1))
       }
-    }
+    },
   },
 
   actions: {
-    addComment(
-      movieId: number,
-      username: string,
-      message: string,
-      rating: number,
-    ) {
+    addComment(movieId: number, username: string, message: string, rating: number) {
       const timestamp = useTimestamp()
-      
+
       const newComment: MovieComment = {
         id: uuidv4(),
         movieId,
@@ -55,10 +50,8 @@ export const useCommentsStore = defineStore('comments', {
 
     deleteComment(movieId: number, commentId: string) {
       if (!this.comments[movieId]) return
-      
-      this.comments[movieId] = this.comments[movieId].filter(
-        comment => comment.id !== commentId
-      )
-    }
-  }
+
+      this.comments[movieId] = this.comments[movieId].filter((comment) => comment.id !== commentId)
+    },
+  },
 })

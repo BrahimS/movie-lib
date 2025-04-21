@@ -22,27 +22,15 @@ const formatDate = (date: string) => {
 <template>
   <div class="tw-mt-8">
     <h3 class="tw-text-xl tw-mb-4">Comments</h3>
-    <div v-if="comments.length === 0" class="tw-text-center ">
-      No comments yet. Be the first to comment!
-    </div>
+    <div v-if="comments.length === 0" class="tw-text-center">No comments yet. Be the first to comment!</div>
     <v-list v-else class="tw-bg-gray-950">
-      <v-list-item
-        v-for="comment in comments"
-        :key="comment.id"
-        class="tw-mb-4"
-      >
+      <v-list-item v-for="comment in comments" :key="comment.id" class="tw-mb-4">
         <v-card width="100%" class="tw-bg-gray-950">
           <v-card-item>
             <v-card-title>
               <div class="tw-flex tw-justify-between tw-items-center">
                 <span class="tw-font-bold">{{ comment.username }}</span>
-                <v-rating
-                  :model-value="comment.rating"
-                  color="warning"
-                  density="compact"
-                  readonly
-                  size="small"
-                />
+                <v-rating :model-value="comment.rating" color="warning" density="compact" readonly size="small" />
               </div>
             </v-card-title>
             <v-card-text>

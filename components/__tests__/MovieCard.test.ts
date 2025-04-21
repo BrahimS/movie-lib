@@ -1,5 +1,4 @@
-
-import { describe, expect, it, test, vi} from 'vitest'
+import { describe, expect, it, test, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import type { Movie } from '@/types/models/movie'
 
@@ -26,7 +25,10 @@ describe('MovieCard', async () => {
         release_date: '2022-01-01',
         overview: 'Test overview',
         runtime: 120,
-        genres: [{ id: 1, name: 'Action' }, { id: 2, name: 'Adventure' }],
+        genres: [
+          { id: 1, name: 'Action' },
+          { id: 2, name: 'Adventure' },
+        ],
         cast: ['Actor 1', 'Actor 2'],
         director: 'Director 1',
         status: 'Released',
@@ -53,16 +55,14 @@ describe('MovieCard', async () => {
           ],
         },
         images: {
-          backdrops: []
-        }
+          backdrops: [],
+        },
       },
     } as unknown as Movie,
   })
 
   it(`IntersectionObserver`, () => {
-    expect(new IntersectionObserver((entries) => entries)).toBeInstanceOf(
-      IntersectionObserver
-    )
+    expect(new IntersectionObserver((entries) => entries)).toBeInstanceOf(IntersectionObserver)
   })
   it('should render correctly', () => {
     expect(wrapper).toBeTruthy()
@@ -74,5 +74,4 @@ describe('MovieCard', async () => {
     await wrapper.find('.movie-card').trigger('click')
     expect(wrapper.emitted('click')).toBeTruthy()
   })
-
-});
+})

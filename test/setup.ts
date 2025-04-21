@@ -8,17 +8,17 @@ vi.mock('#app', () => ({
       getMovies: vi.fn(),
       searchMovies: vi.fn(),
       getMovieDetails: vi.fn(),
-      getMovieCredits: vi.fn()
-    }
+      getMovieCredits: vi.fn(),
+    },
   }),
-  defineNuxtPlugin: vi.fn()
+  defineNuxtPlugin: vi.fn(),
 }))
 
 // Mock Vuetify components
 config.global.components = {
   'v-rating': {
     template: '<div data-testid="v-rating"></div>',
-    props: ['modelValue', 'color', 'halfIncrements', 'readonly']
+    props: ['modelValue', 'color', 'halfIncrements', 'readonly'],
   },
   'v-card': {
     template: '<div><slot></slot></div>',
@@ -34,24 +34,24 @@ config.global.components = {
   },
   'v-chip': {
     template: '<div><slot></slot></div>',
-    props: ['color', 'size']
+    props: ['color', 'size'],
   },
   'v-icon': {
     template: '<div><slot></slot></div>',
-    props: ['icon']
+    props: ['icon'],
   },
   'v-row': {
     template: '<div><slot></slot></div>',
   },
   'v-col': {
     template: '<div><slot></slot></div>',
-    props: ['cols', 'sm', 'md', 'lg']
+    props: ['cols', 'sm', 'md', 'lg'],
   },
   'v-container': {
     template: '<div><slot></slot></div>',
   },
   'v-progress-circular': {
     template: '<div data-testid="loading"></div>',
-    props: ['size', 'width', 'color', 'indeterminate']
-  }
+    props: ['size', 'width', 'color', 'indeterminate'],
+  },
 }

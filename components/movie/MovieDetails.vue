@@ -14,11 +14,7 @@ defineProps<{
   <v-row>
     <!-- Poster -->
     <MoviePoster
-      :posterPath="
-        movie.poster_path
-          ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path
-          : undefined
-      "
+      :posterPath="movie.poster_path ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path : undefined"
       :alt="movie.title"
       :aspectRatio="2 / 3"
     />
@@ -58,13 +54,7 @@ defineProps<{
       <div class="tw-mb-4">
         <span class="tw-font-bold">Genres:</span>
         <span class="tw-ml-2">
-          <v-chip
-            v-for="genre in movie.genres"
-            :key="genre.id"
-            color="primary"
-            variant="outlined"
-            class="tw-mr-2"
-          >
+          <v-chip v-for="genre in movie.genres" :key="genre.id" color="primary" variant="outlined" class="tw-mr-2">
             {{ genre.name }}
           </v-chip>
         </span>
@@ -90,9 +80,7 @@ defineProps<{
       <div v-if="movie.runtime" class="tw-mb-4">
         <span class="tw-font-bold">Runtime:</span>
         <v-icon icon="mdi-clock-outline" class="tw-mx-1" />
-        <span
-          >{{ Math.floor(movie.runtime / 60) }}h {{ movie.runtime % 60 }}m</span
-        >
+        <span>{{ Math.floor(movie.runtime / 60) }}h {{ movie.runtime % 60 }}m</span>
       </div>
 
       <!-- Overview/Description -->

@@ -24,12 +24,12 @@ onMounted(async () => {
     <v-container v-if="currentMovie" class="tw-py-12">
       <BackToMoviesButton />
       <MovieDetails :movie="currentMovie" />
-      <MovieReviews
-        :averageRating="averageRating"
-        :movieId="movieId"
-      />
+      <MovieReviews :averageRating="averageRating" :movieId="movieId" />
     </v-container>
-    <div v-else-if="loading" class="tw-fixed tw-inset-0 tw-flex tw-items-center tw-justify-center tw-bg-black/80 tw-z-50">
+    <div
+      v-else-if="loading"
+      class="tw-fixed tw-inset-0 tw-flex tw-items-center tw-justify-center tw-bg-black/80 tw-z-50"
+    >
       <v-progress-circular :size="70" :width="7" color="primary" indeterminate />
     </div>
     <div v-else class="tw-py-12 tw-text-center">

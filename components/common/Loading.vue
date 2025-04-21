@@ -8,9 +8,7 @@ defineOptions({
 /* Removed styles as they are no longer needed */
 </style>
 <template>
-  <div
-    class="tw-fixed tw-inset-0 tw-flex tw-items-center tw-justify-center tw-bg-black/80 tw-z-50"
-  >
+  <div class="tw-fixed tw-inset-0 tw-flex tw-items-center tw-justify-center tw-bg-black/80 tw-z-50">
     <v-progress-circular :size="70" :width="7" color="primary" indeterminate />
   </div>
 </template>

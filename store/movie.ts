@@ -28,23 +28,21 @@ export const useMovieStore = defineStore('movie', {
     cache: useStorage('movie-cache', {
       movies: {},
       details: {},
-      timestamp: Date.now()
-    }).value
+      timestamp: Date.now(),
+    }).value,
   }),
 
   getters: {
     isCacheValid(): boolean {
       return Date.now() - this.cache.timestamp < CACHE_DURATION
-    }
+    },
   },
 
   actions: {
     setInitialMovies(movies: Movie[]) {
-      this.movies = movies.map(movie => ({
+      this.movies = movies.map((movie) => ({
         ...movie,
-        poster_path: movie.poster_path 
-          ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-          : null
+        poster_path: movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : null,
       }))
       this.cache.movies[1] = this.movies
       this.cache.timestamp = Date.now()
@@ -54,7 +52,7 @@ export const useMovieStore = defineStore('movie', {
       this.cache = {
         movies: {},
         details: {},
-        timestamp: Date.now()
+        timestamp: Date.now(),
       }
     },
 
@@ -62,9 +60,7 @@ export const useMovieStore = defineStore('movie', {
       try {
         // Check cache first
         if (this.isCacheValid && this.cache.movies[page]) {
-          this.movies = page === 1 
-            ? this.cache.movies[page] 
-            : [...this.movies, ...this.cache.movies[page]]
+          this.movies = page === 1 ? this.cache.movies[page] : [...this.movies, ...this.cache.movies[page]]
           return
         }
 
@@ -79,9 +75,7 @@ export const useMovieStore = defineStore('movie', {
         // Process and validate each movie
         const movies = response.results.map((movie: any) => ({
           ...movie,
-          poster_path: movie.poster_path 
-            ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-            : null
+          poster_path: movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : null,
         }))
 
         // Update state and cache
@@ -90,7 +84,7 @@ export const useMovieStore = defineStore('movie', {
         } else {
           this.movies = [...this.movies, ...movies]
         }
-        
+
         this.cache.movies[page] = movies
         this.cache.timestamp = Date.now()
         this.error = null
@@ -115,9 +109,7 @@ export const useMovieStore = defineStore('movie', {
         // Process and validate each movie
         const movies = response.results.map((movie: any) => ({
           ...movie,
-          poster_path: movie.poster_path 
-            ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-            : null
+          poster_path: movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : null,
         }))
 
         // Update state
@@ -126,7 +118,7 @@ export const useMovieStore = defineStore('movie', {
         } else {
           this.movies = [...this.movies, ...movies]
         }
-        
+
         this.error = null
       } catch (error: any) {
         console.error('Error searching movies:', error)
@@ -146,10 +138,7 @@ export const useMovieStore = defineStore('movie', {
 
         this.loading = true
         const { $api } = useNuxtApp()
-        const [details, credits] = await Promise.all([
-          $api.getMovieDetails(id),
-          $api.getMovieCredits(id)
-        ])
+        const [details, credits] = await Promise.all([$api.getMovieDetails(id), $api.getMovieCredits(id)])
 
         if (!details || !credits) {
           throw new Error('Failed to fetch movie details')
@@ -158,17 +147,13 @@ export const useMovieStore = defineStore('movie', {
         // Process poster and backdrop paths
         const movieDetails = {
           ...details,
-          poster_path: details.poster_path 
-            ? `https://image.tmdb.org/t/p/w500${details.poster_path}`
-            : null,
-          backdrop_path: details.backdrop_path
-            ? `https://image.tmdb.org/t/p/original${details.backdrop_path}`
-            : null,
+          poster_path: details.poster_path ? `https://image.tmdb.org/t/p/w500${details.poster_path}` : null,
+          backdrop_path: details.backdrop_path ? `https://image.tmdb.org/t/p/original${details.backdrop_path}` : null,
           // Extract director from crew
-          director: credits.crew?.find(person => person.job === 'Director')?.name || null,
+          director: credits.crew?.find((person) => person.job === 'Director')?.name || null,
           // Get top cast members (first 5)
-          cast: credits.cast?.slice(0, 5).map(actor => actor.name) || [],
-          credits
+          cast: credits.cast?.slice(0, 5).map((actor) => actor.name) || [],
+          credits,
         }
 
         this.currentMovie = movieDetails
@@ -181,6 +166,6 @@ export const useMovieStore = defineStore('movie', {
       } finally {
         this.loading = false
       }
-    }
-  }
+    },
+  },
 })

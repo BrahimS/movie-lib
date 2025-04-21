@@ -18,12 +18,7 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: [
-    '@nuxtjs/tailwindcss',
-    'vuetify-nuxt-module',
-    '@pinia/nuxt',
-    '@vueuse/nuxt',
-  ],
+  modules: ['@nuxtjs/tailwindcss', 'vuetify-nuxt-module', '@pinia/nuxt', '@vueuse/nuxt'],
 
   tailwindcss: {
     cssPath: '~/assets/css/tailwind.css',
@@ -60,29 +55,18 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      tmdbBaseURL:
-        process.env.NUXT_PUBLIC_TMDB_BASE_URL || 'https://api.themoviedb.org/3',
+      tmdbBaseURL: process.env.NUXT_PUBLIC_TMDB_BASE_URL || 'https://api.themoviedb.org/3',
       tmdbApiKey: process.env.NUXT_PUBLIC_TMDB_API_KEY,
       apiBase: 'https://api.themoviedb.org/3',
-      apiImageBaseUrl:
-        process.env.NUXT_PUBLIC_API_IMAGE_BASE_URL ||
-        'https://image.tmdb.org/t/p/w500',
+      apiImageBaseUrl: process.env.NUXT_PUBLIC_API_IMAGE_BASE_URL || 'https://image.tmdb.org/t/p/w500',
       apiKey: '',
     },
   },
 
-  css: [
-    '@mdi/font/css/materialdesignicons.min.css',
-    '~/assets/css/tailwind.css',
-  ],
+  css: ['@mdi/font/css/materialdesignicons.min.css', '~/assets/css/tailwind.css'],
 
   build: {
-    transpile: [
-      'vuetify',
-      '@tiptap/vue-3',
-      '@tiptap/pm',
-      '@tiptap/starter-kit',
-    ],
+    transpile: ['vuetify', '@tiptap/vue-3', '@tiptap/pm', '@tiptap/starter-kit'],
   },
 
   vite: {

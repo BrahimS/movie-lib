@@ -43,14 +43,7 @@ useInfiniteScroll(
   <div ref="el">
     <!-- Initial loading state (only show on first load) -->
     <v-row v-if="props.loading && !props.movies.length">
-      <v-col
-        v-for="(_, index) in skeletonArray"
-        :key="`skeleton-${index}`"
-        cols="12"
-        sm="6"
-        md="4"
-        lg="3"
-      >
+      <v-col v-for="(_, index) in skeletonArray" :key="`skeleton-${index}`" cols="12" sm="6" md="4" lg="3">
         <MovieCardSkeleton />
       </v-col>
     </v-row>

@@ -20,15 +20,9 @@ defineOptions({
 
     <v-card-text>
       <div class="tw-space-y-2">
-        <div
-          class="tw-h-4 tw-w-full tw-bg-gray-700 tw-animate-pulse tw-rounded"
-        />
-        <div
-          class="tw-h-4 tw-w-5/6 tw-bg-gray-700 tw-animate-pulse tw-rounded"
-        />
-        <div
-          class="tw-h-4 tw-w-4/6 tw-bg-gray-700 tw-animate-pulse tw-rounded"
-        />
+        <div class="tw-h-4 tw-w-full tw-bg-gray-700 tw-animate-pulse tw-rounded" />
+        <div class="tw-h-4 tw-w-5/6 tw-bg-gray-700 tw-animate-pulse tw-rounded" />
+        <div class="tw-h-4 tw-w-4/6 tw-bg-gray-700 tw-animate-pulse tw-rounded" />
       </div>
     </v-card-text>
   </v-card>

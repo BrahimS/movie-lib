@@ -2,7 +2,6 @@
 import { ref, onMounted, computed, withDefaults, defineProps } from 'vue'
 import type { Movie } from '@/types/models/movie'
 
-
 const props = withDefaults(
   defineProps<{
     movie: Movie
@@ -71,16 +70,11 @@ onMounted(() => {
           }"
         >
           <template #placeholder>
-            <div
-              class="tw-absolute tw-inset-0 tw-bg-gray-700 tw-animate-pulse"
-            />
+            <div class="tw-absolute tw-inset-0 tw-bg-gray-700 tw-animate-pulse" />
           </template>
         </v-img>
       </template>
-      <div
-        v-else
-        class="tw-absolute tw-inset-0 tw-bg-gray-700 tw-animate-pulse"
-      />
+      <div v-else class="tw-absolute tw-inset-0 tw-bg-gray-700 tw-animate-pulse" />
     </div>
 
     <v-card-title class="tw-line-clamp-2">
@@ -88,18 +82,11 @@ onMounted(() => {
     </v-card-title>
 
     <v-card-subtitle v-if="movie.vote_average">
-      <v-rating
-        :model-value="rating"
-        color="amber"
-        density="compact"
-        half-increments
-        readonly
-        size="small"
-      />
+      <v-rating :model-value="rating" color="amber" density="compact" half-increments readonly size="small" />
     </v-card-subtitle>
 
     <v-card-text v-if="movie.overview" class="tw-line-clamp-3 py-4">
-      {{ movie.overview.substring(0, 80)+ '...' }}
+      {{ movie.overview.substring(0, 80) + '...' }}
     </v-card-text>
   </v-card>
 </template>

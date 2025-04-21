@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { defineProps, defineOptions } from 'vue'
 
-defineOptions ({
-  name: 'NoResults'
+defineOptions({
+  name: 'NoResults',
 })
 defineProps<{
   message?: string
 }>()
-
 </script>
 
 <template>

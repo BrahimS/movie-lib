@@ -18,17 +18,14 @@ export default defineNuxtPlugin(() => {
   const defaultOptions: FetchOptions = {
     baseURL,
     headers: {
-      'Accept': 'application/json',
-      'Cache-Control': 'public, max-age=300'
-    }
+      Accept: 'application/json',
+      'Cache-Control': 'public, max-age=300',
+    },
   }
 
-  const makeRequest = async <T = TMDBResponse>(
-    endpoint: string,
-    options: FetchOptions = {}
-  ): Promise<T> => {
+  const makeRequest = async <T = TMDBResponse>(endpoint: string, options: FetchOptions = {}): Promise<T> => {
     const cacheKey = `${endpoint}${JSON.stringify(options.params || {})}`
-    
+
     if (cache.has(cacheKey)) {
       return cache.get(cacheKey) as Promise<T>
     }
@@ -37,17 +34,17 @@ export default defineNuxtPlugin(() => {
       const params = {
         api_key: apiKey,
         language: 'en-US',
-        ...(options.params || {})
+        ...(options.params || {}),
       }
 
       const promise = $fetch<T>(endpoint, {
         ...defaultOptions,
         ...options,
-        params
+        params,
       })
 
       cache.set(cacheKey, promise)
-      
+
       // Clear cache after expiry
       setTimeout(() => {
         cache.delete(cacheKey)
@@ -63,30 +60,30 @@ export default defineNuxtPlugin(() => {
   const api = {
     async getMovies(page = 1) {
       return makeRequest('/movie/popular', {
-        params: { page }
+        params: { page },
       })
     },
 
     async searchMovies(query: string, page = 1) {
       return makeRequest('/search/movie', {
-        params: { query, page }
+        params: { query, page },
       })
     },
 
     async getMovieDetails(id: string) {
       return makeRequest(`/movie/${id}`, {
-        params: { append_to_response: 'videos,images' }
+        params: { append_to_response: 'videos,images' },
       })
     },
 
     async getMovieCredits(id: string) {
       return makeRequest(`/movie/${id}/credits`)
-    }
+    },
   }
 
   return {
     provide: {
-      api
-    }
+      api,
+    },
   }
 })

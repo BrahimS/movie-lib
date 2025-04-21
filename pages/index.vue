@@ -16,7 +16,7 @@ await useFetch('/api/movies', {
     return response
   },
   server: true,
-  lazy: false
+  lazy: false,
 })
 
 const searchMovies = async () => {
@@ -38,7 +38,7 @@ const loadMoreMovies = async () => {
 }
 
 definePageMeta({
-  keepalive: true
+  keepalive: true,
 })
 </script>
 
@@ -48,23 +48,13 @@ definePageMeta({
       <Hero />
       <v-container class="tw-py-12">
         <!-- Search -->
-        <SearchBar
-          v-model="searchQuery"
-          label="Search Movies"
-          @search="searchMovies"
-        />
+        <SearchBar v-model="searchQuery" label="Search Movies" @search="searchMovies" />
 
         <!-- Results -->
-        <MovieList 
-          :movies="store.movies" 
-          :loading="store.loading"
-          @load-more="loadMoreMovies"
-        />
+        <MovieList :movies="store.movies" :loading="store.loading" @load-more="loadMoreMovies" />
       </v-container>
     </div>
   </div>
 </template>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

@@ -9,9 +9,8 @@ describe('MoviePoster', async () => {
       alt: 'Test Movie',
       aspectRatio: 1,
       rounded: true,
-      shadow: true
+      shadow: true,
     },
-
   })
   it('should render correctly', () => {
     expect(wrapper).toBeTruthy()
